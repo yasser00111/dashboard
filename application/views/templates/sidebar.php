@@ -35,9 +35,9 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?= site_url('data_unit1/') ?>">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>data Unit 1</span></a>
       </li>
       <!-- Heading -->
       <div class="sidebar-heading">
