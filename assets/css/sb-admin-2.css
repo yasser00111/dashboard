@@ -1655,9 +1655,16 @@ pre code {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    
+  }
+  html{
+    font-size: 75%;
+
   }
   .table-responsive-sm > .table-bordered {
     border: 0;
+    font-size: 62.5%;
+    
   }
 }
 

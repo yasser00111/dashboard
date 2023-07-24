@@ -1,8 +1,9 @@
 <div class="container fluid">
     <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah"> <i class="fas fa-plus fa-sm"></i>Tambah data </button>
  
-                        <a href="<?= site_url('admin/import/create') ?>" class="btn btn-sm btn-primary mb-3">Import</a>
-                        <table class="table table-bordered table-striped">
+<a href="<?= site_url('admin/import/create') ?>" class="btn btn-sm btn-primary mb-3">Import</a>
+<a href="<?= site_url('admin/import/export') ?>" class="btn btn-sm btn-primary mb-3">Export</a>
+<!-- <table class="table table-bordered table-striped"> -->
 
     <table class="table wy-table-bordered">
         <tr>
@@ -14,20 +15,20 @@
             <th>kategori</th>
             <th colspan="3">AKSI</th>
         </tr>
-<?php 
-$no =1;
-foreach($unit1  as $un1):?>
-<tr>
-    <td><?php echo $no++ ?></td>
-    <td><?php echo $un1->nama ?></td>
-    <td><?php echo $un1->jenis ?></td>
-    <td><?php echo $un1->merk ?></td>
-    <td><?php echo $un1->kategori ?>
-    <td><div class="btn btn-success btn sm"><i class="fas fa-search-plus"></i></div></td>
-    <td><?php echo anchor('admin/data_unit1/edit/'. $un1->id_unit,'<div class="btn btn-success btn sm "><i class="fas fa-edit"></i</div>') ?></td>
-    <td><?php echo anchor ('admin/data_unit1/hapus/'. $un1->id_unit,'<div class="btn btn-danger btn sm"><i class="fas fa-trash"></i></div>') ?></td>
-    </td>
-</tr>
+	<?php 
+		$no =1;
+		foreach($unit1  as $un1):?>
+		<tr>
+			<td><?php echo $no++ ?></td>
+			<td><?php echo $un1->nama ?></td>
+			<td><?php echo $un1->jenis ?></td>
+			<td><?php echo $un1->merk ?></td>
+			<td><?php echo $un1->kategori ?>
+			<td><div class="btn btn-success btn sm"><i class="fas fa-search-plus"></i></div></td>
+			<td><?php echo anchor('admin/data_unit1/edit/'. $un1->id_unit,'<div class="btn btn-success btn sm "><i class="fas fa-edit"></i</div>') ?></td>
+			<td><?php echo anchor ('admin/data_unit1/hapus/'. $un1->id_unit,'<div class="btn btn-danger btn sm"><i class="fas fa-trash"></i></div>') ?></td>
+			</td>
+		</tr>
 
 
 <?php endforeach; ?>

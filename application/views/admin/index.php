@@ -35,7 +35,6 @@
                     <div class="card-body">
                         <?= $this->session->flashdata('message');?>
                         <a href="<?= site_url('admin/import/create') ?>" class="btn btn-primary mb-3">Import</a>
-                
                     </div>
                     
                 </div>

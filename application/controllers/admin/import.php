@@ -32,25 +32,35 @@
         
                     $highestRow = $worksheet->getHighestRow();
                     $highestColumn = $worksheet->getHighestColumn();
-        
+                   
                     for($row=2; $row<=$highestRow; $row++){
-        
+                        $rowData = $worksheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,NULL,TRUE,FALSE);
+                        if($this->isEmptyRow(reset($rowData))) { continue; } // skip empty row
+
                         $nama = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
                         $jenis = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
                         $merk = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                         $kategori = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-
+                        $status = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                        $bg_color = null;
+                        if ($status == 'R') {
+                            $bg_color = '#FF0101';
+                        }
+                        // print_r($bg_color);
+                        // exit();
                         $data[] = array(
                             'nama'          => $nama,
                             'jenis'          =>$jenis,
                             'merk'           =>$merk,
                             'kategori'      =>$kategori,
+                            'fill'      =>$bg_color,
                         );
-        
                     } 
         
                 }
-        
+
+
+
                 $this->db->insert_batch('tb_unit1' ,$data);
         
                 $message = array(
@@ -69,6 +79,20 @@
                 $this->session->set_flashdata($message);
                 redirect('admin');
             }
+        }
+
+        function isEmptyRow($row) {
+            foreach($row as $cell){
+                if (null !== $cell) return false;
+            }
+            return true;
+        }
+
+        public function export()
+        {
+            $data['title'] = 'Export Excel';
+            $data['tb_unit1'] = $this->db->get('tb_unit1')->result();
+            $this->load->view('admin/export', $data);
         }
 
     }
